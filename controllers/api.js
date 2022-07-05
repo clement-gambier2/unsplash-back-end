@@ -14,10 +14,12 @@ module.exports = class API{
     //create a picture
     static async createPicture(req,res){
         const picture = req.body;
+        console.log(picture);
+
         try{
             await Picture.create(picture);
             //res.status(201).json({message:"Picture created successfully"});
-            res.status(201).json({message: picture});
+            res.status(201).json({message: `${picture.name} created successfully`});
         }
         catch(err){
             res.status(400).json({message:err.message});
